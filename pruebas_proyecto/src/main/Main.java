@@ -8,7 +8,7 @@ public class Main {
 	
     public static void main (String []args) throws InterruptedException, ExecutionException {
     	int exitCode =1;
-      SpeechConfig config = SpeechConfig.fromSubscription("0bd856412b344270a717b95fc36a0245","southcentralus");
+      SpeechConfig config = SpeechConfig.fromSubscription("","southcentralus");
     	config.setSpeechRecognitionLanguage("es-mx");
     	
     	assert(config !=null);
