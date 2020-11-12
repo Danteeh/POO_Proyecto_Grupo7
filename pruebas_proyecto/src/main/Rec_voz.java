@@ -4,10 +4,12 @@ import java.util.concurrent.Future;
 import com.microsoft.cognitiveservices.speech.*;
 
 public class Rec_voz {
-	public static void main(String[] args) {
+	public static String voz_reconocida (String voz) {
 	       try {
+	    	   
+	    	   
 	            //Llave de subscripcion
-	            String speechSubscriptionKey = "YourSubscriptionKey";
+	            String speechSubscriptionKey = "033d74d9b59040038cd22aa266351c97";
 	            
 	            //Region de cloud computing que nos da el servicio
 	            String serviceRegion = "westus";
@@ -29,6 +31,7 @@ public class Rec_voz {
 
 	            if (result.getReason() == ResultReason.RecognizedSpeech) {
 	                System.out.println("We recognized: " + result.getText());
+	                voz =result.getText();
 	                exitCode = 0;
 	            }
 	            else if (result.getReason() == ResultReason.NoMatch) {
@@ -54,6 +57,10 @@ public class Rec_voz {
 	            assert(false);
 	            System.exit(1);
 	        }
+	       
+	      
+	       
+	       return voz;
 	    }
 	
 	
