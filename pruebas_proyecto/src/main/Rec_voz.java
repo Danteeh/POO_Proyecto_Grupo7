@@ -1,21 +1,30 @@
 package main;
 
 import java.util.concurrent.Future;
+
+import javax.swing.JOptionPane;
+
 import com.microsoft.cognitiveservices.speech.*;
 
 public class Rec_voz {
-	public static String voz_reconocida (String voz) {
+	
+	public boolean paso;
+	
+	public  String voz_reconocida (String voz) {
 	       try {
 	    	   
+	    	   String Entrada = "";
+	    	   paso =false;
 	    	   
 	            //Llave de subscripcion
-	            String speechSubscriptionKey = "033d74d9b59040038cd22aa266351c97";
+	            String speechSubscriptionKey = "ef568f62015c4a50a113305c86dbc84e";
 	            
 	            //Region de cloud computing que nos da el servicio
-	            String serviceRegion = "westus";
+	            String serviceRegion = "southcentralus";
 
 	            int exitCode = 1;
 	            SpeechConfig config = SpeechConfig.fromSubscription(speechSubscriptionKey, serviceRegion);
+	            config.setSpeechRecognitionLanguage("es-mx");
 	            assert(config != null);
 
 	            SpeechRecognizer reco = new SpeechRecognizer(config);
@@ -30,9 +39,23 @@ public class Rec_voz {
 	            assert(result != null);
 
 	            if (result.getReason() == ResultReason.RecognizedSpeech) {
-	                System.out.println("We recognized: " + result.getText());
-	                voz =result.getText();
+	                System.out.println(result.getText());
+	               	Entrada=result.getText();
+	                //Validacion para las palabras
+	                Eliminar_Espacios delete = new Eliminar_Espacios();  
+	              
+	            
+	              if (Entrada !=" ") {
+	             	 
+	             	 System.out.println("La letra pronunciada fue: "+delete.EliminarEspacios(Entrada));
+	             	 paso=true;
+	             	 
+	             	 
+	              }
+	                
 	                exitCode = 0;
+	                
+	             
 	            }
 	            else if (result.getReason() == ResultReason.NoMatch) {
 	                System.out.println("NOMATCH: Speech could not be recognized.");
@@ -47,22 +70,28 @@ public class Rec_voz {
 	                    System.out.println("CANCELED: Did you update the subscription info?");
 	                }
 	            }
-
-	            reco.close();
-
-	            System.exit(exitCode);
+                 reco.close();
+                 
+              
+            
+                
+	            //System.exit(exitCode);
 	        } catch (Exception ex) {
 	            System.out.println("Unexpected exception: " + ex.getMessage());
 
 	            assert(false);
 	            System.exit(1);
+	            JOptionPane.showMessageDialog(null, "Entro mensaje");
 	        }
+	
 	       
-	      
-	       
-	       return voz;
-	    }
+	    return voz;
+
+	
+
+
 	
 	
 
-}
+	}
+	}
