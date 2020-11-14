@@ -17,16 +17,14 @@ public class Main {
         
 	
 		Reproducir_mp3 repro = new Reproducir_mp3();
-		try {
-			repro.reproducir();
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (JavaLayerException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
+		
+			try {
+				repro.reproducir();
+			} catch (FileNotFoundException | JavaLayerException e) {
+				
+				e.printStackTrace();
+			}
+	
 		
 	}
 }

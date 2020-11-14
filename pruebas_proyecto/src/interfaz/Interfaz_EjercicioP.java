@@ -15,11 +15,13 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 
 
@@ -46,6 +48,7 @@ public class Interfaz_EjercicioP extends JFrame {
 	}
 
 	public Interfaz_EjercicioP()  {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Interfaz_EjercicioP.class.getResource("/imagenes/owl.png")));
 		
 		setUndecorated(true);
 		
@@ -70,12 +73,18 @@ public class Interfaz_EjercicioP extends JFrame {
 				String Entrada = "";
 				System.out.println(reconocimiento.voz_reconocida(Entrada));
 
-				if (reconocimiento.paso == true && reconocimiento.Entrada.charAt(0) == 65) {
-
+				if (reconocimiento.paso == true && reconocimiento.Entrada.charAt(0) == 77) {
+                     
+					
+					JOptionPane.showMessageDialog(null, "Excelente la letra es correcta ");
 					Interfaz_Letra_A Ejercicio_A = new Interfaz_Letra_A();
 					Ejercicio_A.setVisible(true);
+					Ejercicio_A.setLocationRelativeTo(null);
 					dispose();
 
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Palabra incorrecta \n pista: Di una palabra que contenga la letra M ");
 				}
 
 			}
@@ -87,10 +96,15 @@ public class Interfaz_EjercicioP extends JFrame {
 		JLabel Mensaje = new JLabel("Hola "+Interfaz_Inicio.nombre);
 		Mensaje.setForeground(Color.WHITE);
 		Mensaje.setFont(new Font("KG All of Me", Font.PLAIN, 70));
-		Mensaje.setBounds(-480, 140, 491, 196);
+		Mensaje.setBounds(-480, 140, 909, 196);
 		contentPane.add(Mensaje);
 		Microfono.setBounds(419, 600, 119, 124);
 		contentPane.add(Microfono);
+		
+		JLabel Indicador = new JLabel("");
+		Indicador.setIcon(new ImageIcon(Interfaz_EjercicioP.class.getResource("/imagenes/Flecha microfono.gif")));
+		Indicador.setBounds(390, 650, 227, 216);
+		contentPane.add(Indicador);
 		
 		JButton Empezar = new JButton("Empezar");
 	
@@ -111,10 +125,11 @@ public class Interfaz_EjercicioP extends JFrame {
 		Empezar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				AnimationClass ac = new AnimationClass();
-				ac.jButtonYUp(320, -500, 15, 5, Empezar);
-				ac.jLabelYUp(140, -130, 15, 5, Mensaje);
-				ac.jLabelYUp(550, 10, 15, 5, Letra_Ejemplo);
+				ac.jButtonYUp(320, -500, 5, 5, Empezar);
+				ac.jLabelYUp(140, -130, 5, 5, Mensaje);
+				ac.jLabelYUp(550, 10,  5, 5, Letra_Ejemplo);
 				ac.jButtonYUp(600, 330, 15, 5, Microfono);
+				ac.jLabelYUp(650, 290, 15, 5,Indicador);
 				
 			}
 		});
@@ -124,7 +139,7 @@ public class Interfaz_EjercicioP extends JFrame {
 			public void windowOpened(WindowEvent e) {
 				
 				AnimationClass ac = new AnimationClass();
-				ac.jLabelXRight(-480, 270, 15, 5, Mensaje);
+				ac.jLabelXRight(-480, 220, 15, 5, Mensaje);
 				ac.jButtonXLeft(1010, 450, 15, 5, Empezar);
 				
 				

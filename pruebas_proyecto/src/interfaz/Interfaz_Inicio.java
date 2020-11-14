@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -23,12 +24,15 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Interfaz_Inicio extends JFrame {
 	private static final long serialVersionUID = 1L;
 	public static String nombre = "Ete setch";
 	private JPanel contentPane;
 	private JTextField textField;
+	private JLabel Flecha;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -59,6 +63,11 @@ public class Interfaz_Inicio extends JFrame {
 		Imagen_Nacho.setIcon(new ImageIcon(Interfaz_Inicio.class.getResource("/imagenes/Logo_Universidad.png")));
 		Imagen_Nacho.setBounds(0, 0, 967, 487);
 		contentPane.add(Imagen_Nacho);
+		
+		Flecha = new JLabel("");
+		Flecha.setIcon(new ImageIcon(Interfaz_Inicio.class.getResource("/imagenes/Flecha_inicio.gif")));
+		Flecha.setBounds(1010, -100, 375, 361);
+		contentPane.add(Flecha);
 
 		JLabel Mensaje_Hola = new JLabel("Hola");
 		Mensaje_Hola.setForeground(Color.WHITE);
@@ -86,6 +95,7 @@ public class Interfaz_Inicio extends JFrame {
 				ac.jLabelYDown(-300, 80, 30, 5, Mensaje_Como);
 				ac.jTextFieldYDown(-100, 220, 20, 5, textField);
 				ac.jButtonYDown(-110, 370, 10, 5, Enviar);
+				ac.jLabelYDown(-100, 400, 10, 5, Flecha);
 
 			}
 		});
@@ -99,7 +109,9 @@ public class Interfaz_Inicio extends JFrame {
 				ac.jTextFieldYUp(220, -100, 10, 5, textField);
 				ac.jButtonYUp(370, -110, 10, 5, Enviar);
 
-				nombre = textField.getText();
+				nombre = textField.getText();	
+				JOptionPane.showMessageDialog(null, "Bienvenido al tratamiento fonologido: "+nombre);
+				
 				System.out.println(nombre);
 				Interfaz_EjercicioP Introduccion = new Interfaz_EjercicioP();
 				Introduccion.setLocationRelativeTo(null);
@@ -110,6 +122,16 @@ public class Interfaz_Inicio extends JFrame {
 		});
 
 		textField = new JTextField();
+		textField.addKeyListener(new KeyAdapter() {
+			
+			public void keyTyped(KeyEvent e) {
+				
+				if(textField.getText().length()>=16) {
+					e.consume();
+				}
+				
+			}
+		});
 		textField.setBounds(306, -100, 400, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
@@ -126,7 +148,8 @@ public class Interfaz_Inicio extends JFrame {
 			public void windowOpened(WindowEvent e) {
 				
 				AnimationClass ac = new AnimationClass();
-				ac.jLabelXLeft(0, -1000, 35, 5, Imagen_Nacho);
+				ac.jLabelXLeft(0, -1000, 20, 5, Imagen_Nacho);
+				ac.jLabelXLeft(1010, 320, 20, 5, Flecha);
 
 			}
 
