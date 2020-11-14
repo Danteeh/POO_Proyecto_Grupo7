@@ -22,10 +22,11 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.Toolkit;
 
 public class Interfaz_Inicio extends JFrame {
 	private static final long serialVersionUID = 1L;
-	public String nombre = "Ete setch";
+	public static String nombre = "Ete setch";
 	private JPanel contentPane;
 	private JTextField textField;
 
@@ -44,10 +45,11 @@ public class Interfaz_Inicio extends JFrame {
 	}
 
 	public Interfaz_Inicio() {
-
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Interfaz_Inicio.class.getResource("/imagenes/owl.png")));
+		setUndecorated(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1006, 528);
+		setBounds(100, 100, 1002, 499);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

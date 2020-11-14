@@ -10,10 +10,12 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		
 		Interfaz_Inicio inicio = new Interfaz_Inicio();
 		inicio.setLocationRelativeTo(null);
 		inicio.setVisible(true);
         
+	
 		Reproducir_mp3 repro = new Reproducir_mp3();
 		try {
 			repro.reproducir();
@@ -24,7 +26,6 @@ public class Main {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
 
 		
 	}
