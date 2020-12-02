@@ -14,7 +14,6 @@ public class Rec_voz {
 	public String voz_reconocida(String voz) {
 		try {
 
-			Entrada = "";
 			paso = false;
 
 			// Llave de subscripcion
@@ -40,19 +39,13 @@ public class Rec_voz {
 			assert (result != null);
 
 			if (result.getReason() == ResultReason.RecognizedSpeech) {
-				System.out.println("Palabra pronunciada:" + result.getText());
-
-				// Validacion para las palabras
+			
+				// Validacion para las palabras				
 				Eliminar_Espacios delete = new Eliminar_Espacios();
 				Entrada = delete.EliminarEspacios(result.getText());
 				System.out.println(Entrada);
-
-				if (Entrada.charAt(0) >= 65 || Entrada.charAt(0) <= 122) {
-
-					System.out.println("La letra pronunciada fue: " + Entrada.charAt(0));
-					paso = true;
-
-				}
+                paso = true;
+			
 
 				exitCode = 0;
 

@@ -1,32 +1,34 @@
 package interfaz;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import AppPackage.AnimationClass;
-import javazoom.jl.decoder.JavaLayerException;
 import main.Rec_voz;
-import sonidos.Reproducir_mp3;
 
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.ImageIcon;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Toolkit;
+
+
+
 
 
 
 public class Interfaz_EjercicioP extends JFrame {
 
+	
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -73,7 +75,7 @@ public class Interfaz_EjercicioP extends JFrame {
 				String Entrada = "";
 				System.out.println(reconocimiento.voz_reconocida(Entrada));
 
-				if (reconocimiento.paso == true && reconocimiento.Entrada.charAt(0) == 77) {
+				if ( reconocimiento.paso==true && reconocimiento.Entrada.equals("M")) {
                      
 					
 					JOptionPane.showMessageDialog(null, "Excelente la letra es correcta ");

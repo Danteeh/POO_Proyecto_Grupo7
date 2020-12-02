@@ -1,8 +1,6 @@
 package interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,12 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.FileNotFoundException;
-
 import AppPackage.AnimationClass;
-import javazoom.jl.decoder.JavaLayerException;
-import sonidos.Reproducir_mp3;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
@@ -102,6 +95,7 @@ public class Interfaz_Inicio extends JFrame {
 		Enviar.addMouseListener(new MouseAdapter() {
 
 			public void mousePressed(MouseEvent e) {
+				
 				AnimationClass ac = new AnimationClass();
 				ac.jLabelYUp(5, -425, 10, 5, Pantalla);
 				ac.jLabelYUp(-30, -400, 10, 5, Mensaje_Hola);
